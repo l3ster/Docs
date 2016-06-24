@@ -9,7 +9,7 @@ using TestingControllersSample.Core.Interfaces;
 using TestingControllersSample.Core.Model;
 using Xunit;
 
-namespace TestingControllerSample.Tests.UnitTests
+namespace TestingControllersSample.Tests.UnitTests
 {
     public class ApiIdeasControllerTests
     {

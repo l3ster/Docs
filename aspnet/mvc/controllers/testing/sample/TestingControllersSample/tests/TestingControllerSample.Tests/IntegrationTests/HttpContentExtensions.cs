@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace TestingControllerSample.Tests.IntegrationTests
+namespace TestingControllersSample.Tests.IntegrationTests
 {
     public static class HttpClientExtensions
     {

@@ -1,36 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
-using TestingControllersSample;
 using TestingControllersSample.ClientModels;
 using TestingControllersSample.Core.Model;
 using Xunit;
 
-namespace TestingControllerSample.Tests.IntegrationTests
+namespace TestingControllersSample.Tests.IntegrationTests
 {
-    public class ApiIdeasControllerTests
+    public class ApiIdeasControllerTests : IClassFixture<TestFixture<Startup>>
     {
         private readonly HttpClient _client;
 
-        public ApiIdeasControllerTests()
+        public ApiIdeasControllerTests(TestFixture<Startup> fixture)
         {
-            //var server = new TestServer(TestServer.CreateBuilder()
-            //    .UseEnvironment("Development")
-            //    .UseStartup<Startup>());
-            //_client = server.CreateClient();
-
-            //// client always expects json results
-            //_client.DefaultRequestHeaders.Clear();
-            //_client.DefaultRequestHeaders.Accept.Add(
-            //    new MediaTypeWithQualityHeaderValue("application/json"));
-
+            _client = fixture.Client;
         }
 
         internal class NewIdeaDto

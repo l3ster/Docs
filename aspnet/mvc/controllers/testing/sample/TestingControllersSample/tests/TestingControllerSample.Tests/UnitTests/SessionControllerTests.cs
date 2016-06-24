@@ -9,7 +9,7 @@ using TestingControllersSample.Core.Model;
 using TestingControllersSample.ViewModels;
 using Xunit;
 
-namespace TestingControllerSample.Tests.UnitTests
+namespace TestingControllersSample.Tests.UnitTests
 {
     public class SessionControllerTests
     {

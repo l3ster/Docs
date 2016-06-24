@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestingControllerSample.Tests", "tests\TestingControllerSample.Tests\TestingControllerSample.Tests.xproj", "{15760117-9024-4D26-B725-ADBCB53D7E99}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TestingControllersSample.Tests", "tests\TestingControllerSample.Tests\TestingControllersSample.Tests.xproj", "{15760117-9024-4D26-B725-ADBCB53D7E99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
