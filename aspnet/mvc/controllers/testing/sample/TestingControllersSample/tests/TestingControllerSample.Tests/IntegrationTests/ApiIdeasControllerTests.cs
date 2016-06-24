@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.TestHost;
+using Newtonsoft.Json;
 using TestingControllersSample;
 using TestingControllersSample.ClientModels;
 using TestingControllersSample.Core.Model;
@@ -91,7 +93,7 @@ namespace TestingControllerSample.Tests.IntegrationTests
         {
             var testIdeaName = Guid.NewGuid().ToString();
             var newIdea = new NewIdeaDto(testIdeaName, "Description", 1);
-           
+
             var response = await _client.PostAsJsonAsync("/api/ideas/create", newIdea);
             response.EnsureSuccessStatusCode();
 
@@ -113,7 +115,7 @@ namespace TestingControllerSample.Tests.IntegrationTests
             var response = await _client.GetAsync("/api/ideas/forsession/1");
             response.EnsureSuccessStatusCode();
 
-            var ideaList = await response.Content.ReadAsJsonAsync<List<IdeaDTO>>();
+            var ideaList = JsonConvert.DeserializeObject<List<IdeaDTO>>(await response.Content.ReadAsStringAsync());
             var firstIdea = ideaList.First();
             var testSession = Startup.GetTestSession();
             Assert.Equal(testSession.Ideas.First().Name, firstIdea.name);

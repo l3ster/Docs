@@ -31,7 +31,7 @@ namespace TestingControllerSample.Tests.UnitTests
             mockRepo.Setup(r => r.GetById(testSessionId)).Returns((BrainstormSession)null);
             var controller = new IdeasController(mockRepo.Object);
 
-            var result = Assert.IsType<HttpNotFoundObjectResult>(controller.Create(new NewIdeaModel()));
+            var result = Assert.IsType<NotFoundObjectResult>(controller.Create(new NewIdeaModel()));
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace TestingControllerSample.Tests.UnitTests
             };
             mockRepo.Setup(r => r.Update(testSession)).Verifiable();
 
-            var result = Assert.IsType<HttpOkObjectResult>(controller.Create(newIdea));
+            var result = Assert.IsType<OkObjectResult>(controller.Create(newIdea));
             var returnSession = Assert.IsType<BrainstormSession>(result.Value);
 
             mockRepo.Verify();
@@ -70,7 +70,7 @@ namespace TestingControllerSample.Tests.UnitTests
             mockRepo.Setup(r => r.GetById(testSessionId)).Returns((BrainstormSession)null);
             var controller = new IdeasController(mockRepo.Object);
 
-            var result = Assert.IsType<HttpNotFoundObjectResult>(controller.ForSession(testSessionId));
+            var result = Assert.IsType<NotFoundObjectResult>(controller.ForSession(testSessionId));
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace TestingControllerSample.Tests.UnitTests
             mockRepo.Setup(r => r.GetById(testSessionId)).Returns(GetTestSession());
             var controller = new IdeasController(mockRepo.Object);
 
-            var result = Assert.IsType<HttpOkObjectResult>(controller.ForSession(testSessionId));
+            var result = Assert.IsType<OkObjectResult>(controller.ForSession(testSessionId));
             var returnValue = Assert.IsType<List<IdeaDTO>>(result.Value);
             var idea = returnValue.FirstOrDefault();
 

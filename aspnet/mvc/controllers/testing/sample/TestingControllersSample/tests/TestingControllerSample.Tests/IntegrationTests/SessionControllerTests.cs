@@ -29,6 +29,7 @@ namespace TestingControllerSample.Tests.IntegrationTests
                     services.AddInstance<IApplicationEnvironment>(env);
                 })
                 .UseStartup<Startup>());
+
             _client = _server.CreateClient();
         }
 
