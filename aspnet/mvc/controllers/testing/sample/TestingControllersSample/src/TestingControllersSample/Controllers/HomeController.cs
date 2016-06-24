@@ -38,6 +38,7 @@ namespace TestingControllersSample.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(NewSessionModel model)
         {
             if (!ModelState.IsValid)

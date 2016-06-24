@@ -8,6 +8,7 @@ using TestingControllersSample.Core.Interfaces;
 using TestingControllersSample.Core.Model;
 using TestingControllersSample.ViewModels;
 using Xunit;
+
 namespace TestingControllerSample.Tests.UnitTests
 {
     public class SessionControllerTests
