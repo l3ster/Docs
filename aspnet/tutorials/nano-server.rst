@@ -103,45 +103,8 @@ The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process m
 
 Run the following script in the remote session:
 
-.. code:: ps1
-
-  copy \\<nanoserver-ip-address>\AspNetCoreSampleForNano\aspnetcore_schema.xml C:\windows\system32\inetsrv\config\schema
-  copy \\<nanoserver-ip-address>\AspNetCoreSampleForNano\aspnetcore.dll C:\windows\system32\inetsrv
-
-  # Backup existing applicationHost.config before installing ANCM
-  copy C:\Windows\System32\inetsrv\config\applicationHost.config C:\Windows\System32\inetsrv\config\applicationHost_BeforeInstallingANCM.config
-
-  Import-Module IISAdministration
-
-  # Initialize variables
-  $aspNetCoreHandlerFilePath="C:\windows\system32\inetsrv\aspnetcore.dll"
-  Reset-IISServerManager -confirm:$false
-  $sm = Get-IISServerManager
-
-  # Add AppSettings section 
-  $sm.GetApplicationHostConfiguration().RootSectionGroup.Sections.Add("appSettings")
-
-  # Set Allow for handlers section
-  $appHostconfig = $sm.GetApplicationHostConfiguration()
-  $section = $appHostconfig.GetSection("system.webServer/handlers")
-  $section.OverrideMode="Allow"
-
-  # Add aspNetCore section to system.webServer
-  $sectionaspNetCore = $appHostConfig.RootSectionGroup.SectionGroups["system.webServer"].Sections.Add("aspNetCore")
-  $sectionaspNetCore.OverrideModeDefault = "Allow"
-  $sm.CommitChanges()
-
-  # Configure globalModule
-  Reset-IISServerManager -confirm:$false
-  $globalModules = Get-IISConfigSection "system.webServer/globalModules" | Get-IISConfigCollection
-  New-IISConfigCollectionElement $globalModules -ConfigAttribute @{"name"="AspNetCoreModule";"image"=$aspNetCoreHandlerFilePath}
-
-  # Configure module
-  $modules = Get-IISConfigSection "system.webServer/modules" | Get-IISConfigCollection
-  New-IISConfigCollectionElement $modules -ConfigAttribute @{"name"="AspNetCoreModule"}
-
-  # Backup applicationHost.config after ANCM is installed
-  copy C:\Windows\System32\inetsrv\config\applicationHost.config C:\Windows\System32\inetsrv\config\applicationHost_AfterInstallingANCM.config  
+.. literalinclude:: nano-server/Download-Dotnet.ps1
+  :language: powershell
 
 ``NOTE:`` Delete the files ``aspnetcore.dll`` and ``aspnetcore_schema.xml`` from the share after the above step.
 
