@@ -103,7 +103,7 @@ The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process m
 
 Run the following script in the remote session:
 
-.. literalinclude:: nano-server/Download-Dotnet.ps1
+.. literalinclude:: nano-server/enable-ancm.ps1
   :language: powershell
 
 ``NOTE:`` Delete the files ``aspnetcore.dll`` and ``aspnetcore_schema.xml`` from the share after the above step.
