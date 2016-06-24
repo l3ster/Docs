@@ -21,15 +21,15 @@ namespace TestingControllerSample.Tests.IntegrationTests
 
         public ApiIdeasControllerTests()
         {
-            var server = new TestServer(TestServer.CreateBuilder()
-                .UseEnvironment("Development")
-                .UseStartup<Startup>());
-            _client = server.CreateClient();
+            //var server = new TestServer(TestServer.CreateBuilder()
+            //    .UseEnvironment("Development")
+            //    .UseStartup<Startup>());
+            //_client = server.CreateClient();
 
-            // client always expects json results
-            _client.DefaultRequestHeaders.Clear();
-            _client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+            //// client always expects json results
+            //_client.DefaultRequestHeaders.Clear();
+            //_client.DefaultRequestHeaders.Accept.Add(
+            //    new MediaTypeWithQualityHeaderValue("application/json"));
 
         }
 

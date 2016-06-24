@@ -19,21 +19,21 @@ namespace TestingControllerSample.Tests.IntegrationTests
 
         public HomeControllerTests()
         {
-            _server = new TestServer(TestServer.CreateBuilder()
-                .UseEnvironment("Development")
-                // needed for views to be accessed properly
-                .UseServices(services =>
-                {
-                    var env = new TestApplicationEnvironment();
-                    env.ApplicationBasePath =
-                        Path.GetFullPath(Path.Combine(
-                            PlatformServices.Default.Application.ApplicationBasePath, 
-                            "..", "..", "src", "TestingControllersSample"));
-                    env.ApplicationName = "TestingControllersSample";
-                    services.AddInstance<IApplicationEnvironment>(env);
-                })
-                .UseStartup<Startup>());
-            _client = _server.CreateClient();
+            //_server = new TestServer(TestServer.CreateBuilder()
+            //    .UseEnvironment("Development")
+            //    // needed for views to be accessed properly
+            //    .UseServices(services =>
+            //    {
+            //        var env = new TestApplicationEnvironment();
+            //        env.ApplicationBasePath =
+            //            Path.GetFullPath(Path.Combine(
+            //                PlatformServices.Default.Application.ApplicationBasePath,
+            //                "..", "..", "src", "TestingControllersSample"));
+            //        env.ApplicationName = "TestingControllersSample";
+            //        services.AddInstance<IApplicationEnvironment>(env);
+            //    })
+            //    .UseStartup<Startup>());
+            //_client = _server.CreateClient();
         }
 
         [Fact]
