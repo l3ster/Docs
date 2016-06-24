@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using TestingControllersSample.ClientModels;
 using TestingControllersSample.Core.Interfaces;
 using TestingControllersSample.Core.Model;
@@ -24,7 +24,7 @@ namespace TestingControllersSample.Api
             var session = _sessionRepository.GetById(sessionId);
             if (session == null)
             {
-                return HttpNotFound(sessionId);
+                return NotFound(sessionId);
             }
             var result = session.Ideas.Select(i => new IdeaDTO()
             {
@@ -42,12 +42,12 @@ namespace TestingControllersSample.Api
         {
             if (!ModelState.IsValid)
             {
-                return HttpBadRequest(ModelState);
+                return BadRequest(ModelState);
             }
             var session = _sessionRepository.GetById(model.SessionId);
             if (session == null)
             {
-                return HttpNotFound(model.SessionId);
+                return NotFound(model.SessionId);
             }
             var idea = new Idea()
             {

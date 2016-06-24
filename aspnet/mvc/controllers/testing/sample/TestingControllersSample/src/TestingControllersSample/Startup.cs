@@ -1,10 +1,10 @@
 ﻿using System;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Data.Entity;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using TestingControllersSample.Core.Interfaces;
 using TestingControllersSample.Core.Model;
 using TestingControllersSample.Infrastructure;
@@ -15,35 +15,32 @@ namespace TestingControllersSample
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEntityFramework()
-                .AddInMemoryDatabase()
-                .AddDbContext<AppDbContext>(options => 
-                options.UseInMemoryDatabase());
+            services.AddDbContext<AppDbContext>(
+                optionsBuilder => optionsBuilder.UseInMemoryDatabase());
 
             services.AddMvc();
-            services.AddScoped<IBrainstormSessionRepository, 
+
+            services.AddScoped<IBrainstormSessionRepository,
                 EfStormSessionRepository>();
         }
 
-        public void Configure(IApplicationBuilder app, 
+        public void Configure(IApplicationBuilder app,
             IHostingEnvironment env,
             ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(LogLevel.Verbose);
+            loggerFactory.AddConsole(LogLevel.Debug);
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
 
-                app.UseRuntimeInfoPage(); // default path is /runtimeinfo
-                
                 InitializeDatabase(app.ApplicationServices
                     .GetService<IBrainstormSessionRepository>());
-
             }
-            app.UseIISPlatformHandler();
-            app.UseMvcWithDefaultRoute();
+
             app.UseStaticFiles();
+
+            app.UseMvcWithDefaultRoute();
         }
 
         public void InitializeDatabase(IBrainstormSessionRepository repo)
@@ -70,8 +67,5 @@ namespace TestingControllersSample
             session.AddIdea(idea);
             return session;
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

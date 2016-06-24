@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.AspNet.TestHost;
+using Microsoft.AspNetCore.TestHost;
 using TestingControllersSample;
 using TestingControllersSample.ClientModels;
 using TestingControllersSample.Core.Model;

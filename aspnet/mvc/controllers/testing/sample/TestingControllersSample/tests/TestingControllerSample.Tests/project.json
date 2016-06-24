@@ -1,16 +1,24 @@
 ﻿{
-  "frameworks": {
-    "dnx451": { }
-  },
   "dependencies": {
-    "Microsoft.AspNet.TestHost": "1.0.0-rc1-final",
-    "Microsoft.AspNet.WebApi.Client":  "5.2.3",
+    "Microsoft.AspNetCore.TestHost": "1.0.0",
+    "System.Net.Http": "4.1.0",
     "TestingControllersSample": "1.0.0",
-    "xunit": "2.1.0-rc1-build3168",
-    "xunit.runner.dnx": "2.1.0-rc1-build204",
-    "Moq": "4.2.1510.2205"
+    "Moq": "4.6.25-alpha",
+    "dotnet-test-xunit": "1.0.0-*",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    }
   },
-  "commands": {
-    "test": "xunit.runner.dnx"
-  }
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "dnxcore50",
+        "portable-net451+win8"
+      ]
+    }
+  },
+
+  "testRunner": "xunit"
 }

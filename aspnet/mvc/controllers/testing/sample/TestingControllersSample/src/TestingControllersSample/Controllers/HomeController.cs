@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using TestingControllersSample.Core.Interfaces;
 using TestingControllersSample.Core.Model;
 using TestingControllersSample.ViewModels;
