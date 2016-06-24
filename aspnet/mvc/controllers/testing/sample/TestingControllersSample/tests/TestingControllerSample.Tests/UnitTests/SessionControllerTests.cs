@@ -15,7 +15,7 @@ namespace TestingControllerSample.Tests.UnitTests
         [Fact]
         public void IndexReturnsARedirectToIndexHomeWhenIdIsNull()
         {
-            var controller = new SessionController(sessionRepository:null);
+            var controller = new SessionController(sessionRepository: null);
 
             var result = Assert.IsType<RedirectToActionResult>(controller.Index(null));
             Assert.Equal("Home", result.ControllerName);
@@ -68,6 +68,6 @@ namespace TestingControllerSample.Tests.UnitTests
                 Name = "Test Two"
             });
             return sessions;
-        } 
+        }
     }
 }
