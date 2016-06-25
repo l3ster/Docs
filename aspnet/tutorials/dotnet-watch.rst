@@ -73,12 +73,9 @@ The console output will show messages similar to the ones below:
 Running ``dotnet`` commands using ``dotnet watch``
 --------------------------------------------------
 
-Any ``dotnet`` command can be run through ``dotnet watch`` by simply adding ``watch`` after ``dotnet``. For example:
+Any ``dotnet`` command can be run with  ``dotnet watch``:  For example:
 
-- ``dotnet run``: ``dotnet watch run``
-- ``dotnet run --f net451``: ``dotnet watch run --f net451``
-- ``dotnet run --f net451 -- -arg1``: ``dotnet watch run -f net451 -- -arg1``
-- ``dotnet test``: ``dotnet watch test``
+g
 
 To run ``WebApp`` using the watcher, run ``dotnet watch run`` in the ``WebApp`` folder. The console output will show messages similar to the ones below, indicating that ``dotnet watch`` is now watching code files:
 
@@ -98,7 +95,7 @@ Making changes with ``dotnet watch``
 
 Let's fix the bug that we discovered when we tried to compute the product of two number.
 
-Open ``WebApp/Controllers/MathController.cs`` in a text editor.
+Open *WebApp/Controllers/MathController.cs* in a text editor.
 
 You'll notice that we've intentionally introduced a bug in the code.
 
