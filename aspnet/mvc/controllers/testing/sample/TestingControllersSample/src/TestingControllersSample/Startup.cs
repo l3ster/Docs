@@ -28,7 +28,7 @@ namespace TestingControllersSample
             IHostingEnvironment env,
             ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(LogLevel.Debug);
+            loggerFactory.AddConsole(LogLevel.Information);
 
             if (env.IsDevelopment())
             {

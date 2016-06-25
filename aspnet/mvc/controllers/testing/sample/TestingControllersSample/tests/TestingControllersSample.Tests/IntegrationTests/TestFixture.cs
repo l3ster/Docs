@@ -18,7 +18,7 @@ namespace TestingControllersSample.Tests.IntegrationTests
         private readonly TestServer _server;
 
         public TestFixture()
-            : this(Path.Combine("src", "TestingControllersSample"))
+            : this(Path.Combine("src"))
         {
         }
 
