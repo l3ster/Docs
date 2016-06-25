@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using PrimeWeb.Middleware;
 using PrimeWeb.Services;
@@ -31,6 +31,11 @@ namespace PrimeWeb
             {
                 await context.Response.WriteAsync("Hello World!");
             });
+        }
+
+        public static void Main(string[] args)
+        {
+            var host = new Web
         }
     }
 }
