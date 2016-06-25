@@ -30,7 +30,7 @@ The console output will show messages similar to the ones below, indicating that
   user$ dotnet run
   Project WebApp (.NETCoreApp,Version=v1.0) will be compiled because inputs were modified
   Compiling WebApp for .NETCoreApp,Version=v1.0
-  
+
   Compilation succeeded.
     0 Warning(s)
     0 Error(s)
@@ -44,7 +44,7 @@ The console output will show messages similar to the ones below, indicating that
 
 In a web browser, navigate to ``http://localhost:5000/api/math/sum?a=4&b=5`` and you should see the result ``9``.
 
-If you navigate to ``http://localhost:5000/api/math/product?a=4&b=5`` instead, you'd expect to get the result ``20``. Instead, you get ``9`` again. 
+If you navigate to ``http://localhost:5000/api/math/product?a=4&b=5`` instead, you'd expect to get the result ``20``. Instead, you get ``9`` again.
 
 We'll fix that.
 
@@ -75,7 +75,14 @@ Running ``dotnet`` commands using ``dotnet watch``
 
 Any ``dotnet`` command can be run with  ``dotnet watch``:  For example:
 
-g
+========================================= ======================================
+Command                                   Command with watch
+========================================= ======================================
+``dotnet run``                            ``dotnet watch run``
+``dotnet run --f net451``                 ``dotnet watch run --f net451``
+``dotnet run --f net451 -- -arg1``        ``dotnet watch run -f net451 -- -arg1``
+``dotnet test``                           ``dotnet watch test``
+========================================= ======================================
 
 To run ``WebApp`` using the watcher, run ``dotnet watch run`` in the ``WebApp`` folder. The console output will show messages similar to the ones below, indicating that ``dotnet watch`` is now watching code files:
 
@@ -121,15 +128,13 @@ Save the file. The console output will show messages similar to the ones below, 
     0 Warning(s)
     0 Error(s)
   Time elapsed 00:00:03.3312829
-  
+
   Hosting environment: Production
   Content root path: /Users/user/dev/aspnet/Docs/aspnet/tutorials/dotnet-watch/sample/WebApp
   Now listening on: http://localhost:5000
   Application started. Press Ctrl+C to shut down.
 
-
-
-Refresh or open the webpage pointing to ``http://localhost:5000/api/math/product?a=4&b=5`` and you should get the correct result (20).
+Verify ``http://localhost:5000/api/math/product?a=4&b=5`` returns the correct result.
 
 Running tests using ``dotnet watch``
 ------------------------------------
